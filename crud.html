@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+</head>
+<body>
+    <center><h1>Crud por consola</h1></center>
+</body>
+</html>
+<script>
+var empleados=[];//array de los registros de los empleados 
+//metodo crear
+function agregarEmpleado(nombre,edad,cargo,salario){
+    var empleado={
+        nombre:nombre,
+        edad:edad,
+        cargo:cargo,
+        salario:salario
+    } ;
+    empleados.push(empleado);
+    console.log("empleados insertado")
+
+}
+//metodo leer
+function mostrarEmpleado(){
+    if (empleados.length=== 0){
+    console.log("no existen registros de empleados")
+}else{
+    empleados.forEach(function(empleado,indice){
+        console.log("empleado #"+(indice+1));
+        console.log("Nombre:"+(empleado.nombre));
+        console.log("Edad:"+(empleado.edad));
+        console.log("Cargo:"+(empleado.cargo));
+        console.log("Salario:"+(empleado.salario));
+        console.log("<-------------------------------------------->");
+           })
+    }
+}
+//metodo actualizar
+function actualizarEmpleado(indice,nombre,edad,cargo,salario){
+        if (empleados[indice]){
+            empleados[indice].nombre =nombre;
+            empleados[indice].edad =edad;
+            empleados[indice].cargo =cargo;
+            empleados[indice].salario =salario;
+            console.log("empleado Actualizado")
+
+        }else{
+            console.log("El indice proporcionado no existe  -no hay tal-")
+        }
+}
+//metodo delete
+function eliminarEmpleado(indice){
+    if(empleados[indice]){
+        empleados.splice(indice,1)
+        console.log("Empleado Eliminado")
+    }else{
+        console.log("No existe el indice proporcionado -No hay tal-")
+    }
+}
+//agragar empleados
+agregarEmpleado("Gaby",18,"Estudiante",0);
+agregarEmpleado("Javier",27,"Estudiante",10);
+agregarEmpleado("Teddy",100,"Narco",100020000000);
+agregarEmpleado("Joaquin",60,"jefe",546520);
+agregarEmpleado("Pedro",15,"chofer",794);
+//mostrando empleados
+mostrarEmpleado();
+//actulizar empleados
+actualizarEmpleado(0,"Gaby Ana",18,"estudiante",10)
+//mostrando empleados
+mostrarEmpleado();
+//eliminar empleado
+eliminarEmpleado(1);
+//mostrar empleado
+mostrarEmpleado();
+
+
+</script>
